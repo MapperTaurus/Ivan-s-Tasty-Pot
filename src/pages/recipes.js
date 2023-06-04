@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RecipePage = () => {
+const recipes = () => {
   const recipes = [
     { title: 'Recipe 1', description: 'This is a delicious recipe.' },
     { title: 'Recipe 2', description: 'Try this mouthwatering dish.' },
@@ -20,4 +20,4 @@ const RecipePage = () => {
   );
 };
 
-export default RecipePage;
+export default recipes;

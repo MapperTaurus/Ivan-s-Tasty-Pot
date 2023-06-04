@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import RecipePage from './pages/RecipePage';
+import Home from './pages/home';
+import Recipes from './pages/recipes';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 
@@ -25,8 +25,8 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/recipes" element={<RecipePage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/recipes" element={<Recipes />} />
         </Routes>
       </div>
     </Router>
