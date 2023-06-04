@@ -1,5 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import '../styles/topNavigation.css';
+import '../styles/colours.css';
+
 
 const topNavigation = () => {
   return (

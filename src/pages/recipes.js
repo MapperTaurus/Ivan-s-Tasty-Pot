@@ -1,4 +1,5 @@
 import React from 'react';
+import TopNavigation from './topNavigation';
 
 const recipes = () => {
   const recipes = [
@@ -8,7 +9,11 @@ const recipes = () => {
   ];
 
   return (
+
     <div>
+      <div>
+        <TopNavigation />
+      </div>
       <h2>Recipes</h2>
       {recipes.map((recipe, index) => (
         <div key={index}>
