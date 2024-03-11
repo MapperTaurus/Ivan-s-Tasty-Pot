@@ -27,14 +27,18 @@ const Recipes = () => {
       <h1>Recipes</h1>
       {recipes.map((recipe) => (
         <div key={recipe.id}>
-          <h2><Link to={`/recipe/${recipe.title}`}>{recipe.title}</Link></h2>
-          <p>Ingredients: {recipe.ingredients}</p>
-          <p>Steps: {recipe.steps}</p>
-          <p>Tags: {recipe.tags && Object.values(recipe.tags).join(', ')}</p>
+          <h2>
+            <Link
+              to={`/recipe/${encodeURIComponent(recipe.title).replace(/\+/g, ' ')}`}
+              onClick={() => console.log('Clicked on:', recipe.title)}
+            >
+              {recipe.title}
+            </Link>
+          </h2>
           <img
             src={recipe.images}
             alt={`Recipe: ${recipe.title}`}
-            style={{ maxWidth: '100%', height: 'auto' }}
+            style={{ maxWidth: '40%', height: 'auto' }}
           />
         </div>
       ))}
