@@ -1,4 +1,6 @@
+// src/pages/Recipes.js
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import TopNavigation from '../components/topNavigation';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../config/firebaseConfig';
@@ -25,7 +27,7 @@ const Recipes = () => {
       <h1>Recipes</h1>
       {recipes.map((recipe) => (
         <div key={recipe.id}>
-          <h2>{recipe.title}</h2>
+          <h2><Link to={`/recipe/${recipe.title}`}>{recipe.title}</Link></h2>
           <p>Ingredients: {recipe.ingredients}</p>
           <p>Steps: {recipe.steps}</p>
           <p>Tags: {recipe.tags && Object.values(recipe.tags).join(', ')}</p>
