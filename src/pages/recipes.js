@@ -1,4 +1,4 @@
-// src/pages/Recipes.js
+// src/pages/recipes.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import TopNavigation from '../components/topNavigation';

@@ -10,7 +10,6 @@
 
 # production
 /build
-/src/config/firebaseConfig.js
 firebaseConfig.js
 
 # misc

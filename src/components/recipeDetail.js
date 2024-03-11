@@ -1,9 +1,9 @@
-// src/components/RecipeDetail.js
+// src/components/recipeDetail.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { collection, getDocs, where, query } from 'firebase/firestore'; // Update this line
+import { collection, getDocs, where, query } from 'firebase/firestore';
 import { firestore } from '../config/firebaseConfig';
-import { Link } from 'react-router-dom'; // Add this line for Link
+import { Link } from 'react-router-dom';
 
 const RecipeDetail = () => {
   const { recipeName } = useParams();
@@ -41,7 +41,7 @@ const RecipeDetail = () => {
           <p>Ingredients: {recipeDetails.ingredients}</p>
           <p>Steps: {recipeDetails.steps}</p>
           <p>
-            Tags: {Array.isArray(recipeDetails.tags) && recipeDetails.tags.map((tag) => (
+            Tags: {recipeDetails.tags && recipeDetails.tags.map((tag) => (
               <Link key={tag} to={`/tag/${tag}`}>
                 {tag}
               </Link>
