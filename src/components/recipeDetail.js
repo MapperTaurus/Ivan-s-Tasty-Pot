@@ -1,4 +1,3 @@
-// src/components/recipeDetail.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { collection, getDocs, where, query } from 'firebase/firestore';
@@ -38,12 +37,12 @@ const RecipeDetail = () => {
       {recipeDetails ? (
         <div>
           <h1>Recipe Detail: {recipeDetails.title}</h1>
-          <p>Ingredients: {recipeDetails.ingredients}</p>
-          <p>Steps: {recipeDetails.steps}</p>
+          <div dangerouslySetInnerHTML={{ __html: recipeDetails.ingredients }} />
+          <div dangerouslySetInnerHTML={{ __html: recipeDetails.steps }} />
           <p>
             Tags: {recipeDetails.tags && recipeDetails.tags.map((tag) => (
               <Link key={tag} to={`/tag/${tag}`}>
-                {tag}
+                {tag}|
               </Link>
             ))}
           </p>

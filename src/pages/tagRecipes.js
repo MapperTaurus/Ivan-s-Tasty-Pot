@@ -37,7 +37,7 @@ const TagRecipes = () => {
           <p>
             Tags: {recipe.tags && recipe.tags.map((tag) => (
               <Link key={tag} to={`/tag/${tag}`}>
-                {tag}
+                {tag}|
               </Link>
             ))}
           </p>

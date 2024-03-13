@@ -1,7 +1,7 @@
-// src/components/addRecipe.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { firestore, collection, addDoc } from '../config/firebaseConfig';
+import { parse } from 'marked'; // Importing specific function from marked
 
 const AddRecipe = () => {
   const navigate = useNavigate();
@@ -20,20 +20,15 @@ const AddRecipe = () => {
 
   const handleAddRecipe = async () => {
     try {
-      // Split the tags input into an array of individual tags
       const tagsArray = recipe.tags.split(',').map((tag) => tag.trim());
-      
-      // Update the recipe object with the tags array
       const updatedRecipe = { ...recipe, tags: tagsArray };
 
       const recipesCollection = collection(firestore, 'recipes');
       await addDoc(recipesCollection, updatedRecipe);
 
-      // Redirect to the home page or any other route
       navigate('/');
     } catch (error) {
       console.error('Error adding recipe:', error);
-      // Handle the error as needed
     }
   };
 
@@ -46,11 +41,21 @@ const AddRecipe = () => {
         </label>
         <label>
           Ingredients:
-          <textarea name="ingredients" value={recipe.ingredients} onChange={handleInputChange} />
+          <textarea
+            name="ingredients"
+            value={recipe.ingredients}
+            onChange={handleInputChange}
+          />
+          <div dangerouslySetInnerHTML={{ __html: parse(recipe.ingredients) }} />
         </label>
         <label>
           Steps:
-          <textarea name="steps" value={recipe.steps} onChange={handleInputChange} />
+          <textarea
+            name="steps"
+            value={recipe.steps}
+            onChange={handleInputChange}
+          />
+          <div dangerouslySetInnerHTML={{ __html: parse(recipe.steps) }} />
         </label>
         <label>
           Tags:
