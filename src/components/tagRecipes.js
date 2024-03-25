@@ -1,3 +1,4 @@
+/* NOT USED
 // src/components/tagRecipes.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -34,7 +35,7 @@ const TagRecipes = ({ tag }) => {
               {recipe.title}
             </Link>
           </h2>
-          {/* Add other details if needed */}
+          {"Placeholder"}
           <img
             src={recipe.images}
             alt={`Recipe: ${recipe.title}`}
@@ -47,3 +48,4 @@ const TagRecipes = ({ tag }) => {
 };
 
 export default TagRecipes;
+*/

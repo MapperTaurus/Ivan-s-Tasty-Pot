@@ -8,14 +8,11 @@ const RecipeDetail = () => {
   const { recipeName } = useParams();
   const [recipeDetails, setRecipeDetails] = useState(null);
 
-  console.log('Recipe Name:', recipeName); // Log the recipe name
-
   useEffect(() => {
     const fetchRecipeDetails = async () => {
-      console.log('Decoded Recipe Name:', decodeURIComponent(recipeName).replace(/\+/g, ' '));
-
+      const decodedRecipeName = decodeURIComponent(recipeName).replace(/\+/g, ' ');
       const recipesCollection = collection(firestore, 'recipes');
-      const recipeQuery = query(recipesCollection, where('title', '==', decodeURIComponent(recipeName).replace(/\+/g, ' ')));
+      const recipeQuery = query(recipesCollection, where('title', '==', decodedRecipeName));
       const recipesSnapshot = await getDocs(recipeQuery);
 
       if (!recipesSnapshot.empty) {
@@ -25,7 +22,7 @@ const RecipeDetail = () => {
           ...recipeDoc.data(),
         });
       } else {
-        console.error(`Recipe not found for name: ${decodeURIComponent(recipeName)}`);
+        console.error(`Recipe not found for name: ${decodedRecipeName}`);
       }
     };
 
@@ -37,6 +34,23 @@ const RecipeDetail = () => {
       {recipeDetails ? (
         <div>
           <h1>Recipe Detail: {recipeDetails.title}</h1>
+          <div>
+            {recipeDetails.thumbnail && (
+              <img
+                src={recipeDetails.thumbnail}
+                alt={`${recipeDetails.title}`}
+                style={{ maxWidth: '60%', height: 'auto' }}
+              />
+            )}
+            {recipeDetails.gallery?.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`${index + 1}`}
+                style={{ maxWidth: '60%', height: 'auto' }}
+              />
+            ))}
+          </div>
           <div dangerouslySetInnerHTML={{ __html: recipeDetails.ingredients }} />
           <div dangerouslySetInnerHTML={{ __html: recipeDetails.steps }} />
           <p>
@@ -46,11 +60,6 @@ const RecipeDetail = () => {
               </Link>
             ))}
           </p>
-          <img
-            src={recipeDetails.images}
-            alt={`Recipe: ${recipeDetails.title}`}
-            style={{ maxWidth: '60%', height: 'auto' }}
-          />
         </div>
       ) : (
         <p>Loading recipe details...</p>
