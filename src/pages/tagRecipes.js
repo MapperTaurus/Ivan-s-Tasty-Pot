@@ -41,11 +41,13 @@ const TagRecipes = () => {
               </Link>
             ))}
           </p>
-          <img
-            src={recipe.images}
-            alt={`Recipe: ${recipe.title}`}
-            style={{ maxWidth: '40%', height: 'auto' }}
-          />
+          {recipe.thumbnail && (
+            <img
+              src={recipe.thumbnail}
+              alt={`Recipe: ${recipe.title}`}
+              style={{ maxWidth: '40%', height: 'auto' }}
+            />
+          )}
         </div>
       ))}
     </div>
