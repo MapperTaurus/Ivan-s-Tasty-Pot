@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { firestore } from '../config/firebaseConfig';
@@ -10,6 +10,8 @@ const RecipeDetail = () => {
   const [recipeDetails, setRecipeDetails] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [showGallery, setShowGallery] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchEndX, setTouchEndX] = useState(null);
 
   useEffect(() => {
     const fetchRecipeDetails = async () => {
@@ -32,22 +34,80 @@ const RecipeDetail = () => {
     fetchRecipeDetails();
   }, [recipeName]);
 
-  const openGallery = (index) => {
+  const openGallery = useCallback((index) => {
     setSelectedImageIndex(index);
     setShowGallery(true);
-  };
+  }, []);
 
-  const closeGallery = () => {
+  const closeGallery = useCallback(() => {
     setShowGallery(false);
-  };
+  }, []);
 
-  const navigateGallery = (direction) => {
+  const navigateGallery = useCallback((direction) => {
     const newIndex =
       direction === 'next'
         ? (selectedImageIndex + 1) % recipeDetails.gallery.length
         : (selectedImageIndex - 1 + recipeDetails.gallery.length) % recipeDetails.gallery.length;
     setSelectedImageIndex(newIndex);
-  };
+  }, [selectedImageIndex, recipeDetails]);
+
+  const handleKeyboardNavigation = useCallback((event) => {
+    if (!showGallery) return;
+    switch (event.key) {
+      case 'ArrowRight':
+        navigateGallery('next');
+        break;
+      case 'ArrowLeft':
+        navigateGallery('prev');
+        break;
+      case 'Escape':
+        closeGallery();
+        break;
+      default:
+        break;
+    }
+  }, [navigateGallery, closeGallery, showGallery]);
+
+  const handleTouchStart = useCallback((event) => {
+    setTouchStartX(event.touches[0].clientX);
+  }, []);
+
+  const handleTouchMove = useCallback((event) => {
+    setTouchEndX(event.touches[0].clientX);
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
+    if (touchStartX && touchEndX) {
+      const deltaX = touchEndX - touchStartX;
+      if (Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          navigateGallery('prev');
+        } else {
+          navigateGallery('next');
+        }
+      }
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  }, [touchStartX, touchEndX, navigateGallery]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardNavigation);
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardNavigation);
+    };
+  }, [handleKeyboardNavigation]);
+
+  useEffect(() => {
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
 
   return (
     <div>

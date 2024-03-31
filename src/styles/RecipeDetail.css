@@ -55,27 +55,33 @@
 
 /* Media query for smaller screens (e.g., mobile devices) */
 @media (max-width: 768px) {
-  .close-button,
   .prev-button,
   .next-button {
     font-size: 16px; /* Adjust font size for smaller screens */
+  }
+  .close-button{
+    font-size: 24px;
   }
 }
 
 /* Media query for medium-sized screens (e.g., tablets) */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .close-button,
   .prev-button,
   .next-button {
-    font-size: 20px; /* Adjust font size for medium-sized screens */
-  }
+    font-size: 24px; /* Adjust font size for medium-sized screens */}
+  .close-button{
+      font-size: 32px;
+    }
 }
 
 /* Media query for larger screens (e.g., desktops) */
 @media (min-width: 1025px) {
-  .close-button,
   .prev-button,
   .next-button {
-    font-size: 28px; /* Adjust font size for larger screens */
+    font-size: 32px; /* Adjust font size for larger screens */
   }
+  .close-button{
+    font-size: 52px;
+  }
+
 }
