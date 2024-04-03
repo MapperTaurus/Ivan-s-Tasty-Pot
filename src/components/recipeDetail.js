@@ -4,6 +4,10 @@ import { collection, getDocs, where, query } from 'firebase/firestore';
 import { firestore } from '../config/firebaseConfig';
 import { Link } from 'react-router-dom';
 import '../styles/RecipeDetail.css';
+import { tagMapping } from '../components/tagMapping'; // Import the tagMapping object
+import '../styles/TagStyle.css';
+
+
 
 const RecipeDetail = () => {
   const { recipeName } = useParams();
@@ -135,12 +139,16 @@ const RecipeDetail = () => {
           <div dangerouslySetInnerHTML={{ __html: recipeDetails.ingredients }} />
           <div dangerouslySetInnerHTML={{ __html: recipeDetails.steps }} />
           <p>
-            Tags: {recipeDetails.tags && recipeDetails.tags.map((tag) => (
-              <Link key={tag} to={`/tag/${tag}`}>
-                {tag}|
-              </Link>
-            ))}
-          </p>
+  Tags: {recipeDetails.tags && recipeDetails.tags.map((tag) => {
+    // Check if there's a mapping for the current tag
+    const tagClassName = tagMapping[tag] ? tagMapping[tag] : 'plain-tag';
+    return (
+      <Link key={tag} to={`/tag/${tag}`}>
+        <span className={tagClassName}>{tag}</span> {/* Apply the class based on the mapping */}
+      </Link>
+    );
+  })}
+</p>
         </div>
       ) : (
         <p>Loading recipe details...</p>
