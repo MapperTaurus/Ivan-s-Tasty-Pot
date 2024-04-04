@@ -4,7 +4,7 @@ import { collection, getDocs, where, query } from 'firebase/firestore';
 import { firestore } from '../config/firebaseConfig';
 import { Link } from 'react-router-dom';
 import '../styles/RecipeDetail.css';
-import { tagMapping } from '../components/tagMapping'; // Import the tagMapping object
+import { tagMapping } from '../components/tagMapping';
 import '../styles/TagStyle.css';
 
 
@@ -139,16 +139,15 @@ const RecipeDetail = () => {
           <div dangerouslySetInnerHTML={{ __html: recipeDetails.ingredients }} />
           <div dangerouslySetInnerHTML={{ __html: recipeDetails.steps }} />
           <p>
-  Tags: {recipeDetails.tags && recipeDetails.tags.map((tag) => {
-    // Check if there's a mapping for the current tag
-    const tagClassName = tagMapping[tag] ? tagMapping[tag] : 'plain-tag';
-    return (
-      <Link key={tag} to={`/tag/${tag}`}>
-        <span className={tagClassName}>{tag}</span> {/* Apply the class based on the mapping */}
-      </Link>
-    );
-  })}
-</p>
+            Tags: {recipeDetails.tags && recipeDetails.tags.map((tag) => {
+              const tagClassNames = tagMapping[tag] ? tagMapping[tag].join(' ') : 'tag_none';
+              return (
+                <Link key={tag} to={`/tag/${tag}`}>
+                  <span className={`tag_all ${tagClassNames}`}>{tag}</span> {/* Apply the classes */}
+                </Link>
+              );
+            })}
+          </p>
         </div>
       ) : (
         <p>Loading recipe details...</p>

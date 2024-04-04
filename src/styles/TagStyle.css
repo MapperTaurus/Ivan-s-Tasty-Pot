@@ -1,16 +1,8 @@
-.tag {
-  padding: 0.2rem 0.5rem;
-  margin-right: 0.5rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
 a {
   text-decoration: none;
 }
 
-.tag_tomato {
+.tag_all {
   padding: 4px 8px;
   font-size: 12px;
   color: white;
@@ -27,62 +19,24 @@ a {
   border-bottom: 4px solid rgba(0,0,0,0.21);
   border-radius: 4px;
   text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+
+.tag_none {
+  background: linear-gradient(rgb(201, 201, 201) 0%, rgb(231, 231, 231) 100%);
+  color: black;
+}
+
+
+.tag_tomato {
   background: linear-gradient(rgb(255, 99, 71) 0%, rgb(255, 71, 111) 100%);
 }
 
 .tag_mince {
-  padding: 4px 8px;
-  font-size: 12px;
-  color: white;
-  box-shadow: none;
-  text-transform: capitalize;
-  text-decoration: none; 
-  font-family: 'Lato', sans-serif;
-  text-align: center;
-  box-sizing: border-box;
-  margin: 5px;
-  display: inline-block;
-  position: relative;
-  border: 1px solid rgba(0,0,0,0.21);
-  border-bottom: 4px solid rgba(0,0,0,0.21);
-  border-radius: 4px;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
   background: linear-gradient(rgb(133, 82, 15) 0%, rgb(192, 98, 22) 100%);
 }
 
 .tag_onion {
-  padding: 4px 8px;
-  margin: 1px;
-  font-size: 12px;
-  color: black;
-  box-shadow: none;
-  text-transform: capitalize;
-  text-decoration: none; 
-  font-family: 'Lato', sans-serif;
-  text-align: center;
-  box-sizing: border-box;
-  display: inline-block;
-  position: relative;
-  border: 1px solid rgba(0,0,0,0.21);
-  border-bottom: 4px solid rgba(0,0,0,0.21);
-  border-radius: 4px;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
   background: linear-gradient(rgb(255, 236, 131) 0%, rgb(255, 236, 149) 100%);
+  color: black;
 }
-
-
-  
-  .tag_grapes {
-    background-color: purple;
-  }
-  
-  .tag_milk {
-    background-color: white;
-    color: black; /* Ensure text is visible on white background */
-  }
-  
-  .tag_egg {
-    background-color: yellow;
-    color: black; /* Ensure text is visible on yellow background */
-  }
   
