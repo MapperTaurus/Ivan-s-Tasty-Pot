@@ -1,0 +1,56 @@
+/* TopNav.css */
+
+.top_nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo-container {
+  margin-bottom: 15px; /* Add space below the logo */
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.nav_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav_item {
+  margin-right: 0; /* Remove default margin */
+}
+
+.nav_button:not(:last-child) {
+  margin-right: 10px; /* Add margin only to the right side of non-last items */
+}
+
+.nav_button {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+  transition: background-color 0.3s;
+  background-color: #f9c901;
+}
+
+.nav_button_round_r {
+  border-radius: 0 10px 10px 0;
+}
+
+.nav_button_round_l {
+  border-radius: 10px 0 0 10px;
+}
+
+.nav_button:hover,
+.nav_button.active {
+  text-decoration: none; /* Remove default underline */
+  border-bottom: 5px solid #333; /* Apply thicker underline */
+  padding-bottom: 5px; /* Increase distance between text and underline */
+}
+

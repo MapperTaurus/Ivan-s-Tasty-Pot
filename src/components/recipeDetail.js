@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { firestore } from '../config/firebaseConfig';
 import { Link } from 'react-router-dom';
-import '../styles/RecipeDetail.css';
 import { tagMapping } from '../components/tagMapping';
+import '../styles/RecipeDetail.css';
 import '../styles/TagStyle.css';
 
 

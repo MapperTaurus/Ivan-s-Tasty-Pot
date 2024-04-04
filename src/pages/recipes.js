@@ -1,9 +1,9 @@
 // src/pages/recipes.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import TopNavigation from '../components/topNavigation';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../config/firebaseConfig';
+import TopNav from '../components/topNav';
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -24,6 +24,7 @@ const Recipes = () => {
 
   return (
     <div>
+          <TopNav />
       <h1>Recipes</h1>
       {recipes.map((recipe) => (
         <div key={recipe.id}>
@@ -44,8 +45,6 @@ const Recipes = () => {
           )}
         </div>
       ))}
-
-      <TopNavigation />
     </div>
   );
 };

@@ -1,11 +1,13 @@
 // src/pages/Home.js
 import React from 'react';
-import TopNavigation from '../components/topNavigation';
+import '../styles/GlobalStyles.css'; 
+import TopNav from '../components/topNav';
 
 
 const Home = () => {
   return (
     <div>
+          <TopNav />
       <h1>Welcome to Ivan's Tasty Pot!</h1>
       <p>Explore delicious recipes and satisfy your taste buds.</p>
       <div>
@@ -16,7 +18,6 @@ const Home = () => {
         {/* Add more images or content as needed */}
       </div>
       <div>
-        <TopNavigation />
       </div>
     </div>
   );
