@@ -1,0 +1,76 @@
+/* RecipeCard.css */
+
+.recipes-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-between; /* Add space between items */
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+  
+  .recipe-card {
+    width: 250px; /* Set a fixed width for the recipe card */
+    height: 200px; /* Set a fixed height for the recipe card */
+    margin: 5px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    overflow: hidden; /* Ensure that content doesn't overflow */
+  }
+  
+  .recipe-card:hover {
+    transform: translateY(-5px); /* Add slight elevation effect on hover */
+  }
+  
+  .recipe-card img {
+    width: 100%; /* Make the image fill the card horizontally */
+    height: 70%; /* Make the image fill 70% of the card vertically */
+    object-fit: cover; /* Ensure the image covers the entire space of the card */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  .recipe-card h3 {
+    margin-top: 10px; /* Add space between image and title */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center; /* Center align the title */
+  }
+  
+  .recipe-link {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack the image and title vertically */
+    height: 100%; /* Ensure that the link fills the entire recipe card */
+    text-decoration: none; /* Remove default link underline */
+    color: inherit; /* Inherit the color from the parent element */
+  }
+  
+  /* Media queries for responsive design */
+  @media screen and (max-width: 1138px) {
+    .recipe-card {
+      width: calc(50% - 20px); /* Adjust width for screens between 768px and 1138px (2 recipes per row) */
+    }
+    .recipes-container {
+        padding-left: 10%; /* Adjust left padding for screens between 768px and 1138px */
+        padding-right: 10%; /* Adjust right padding for screens between 768px and 1138px */
+  }
+}
+
+@media screen and (max-width: 768px) {
+    .recipe-card {
+      width: calc(50% - 20px); /* Adjust width for phone (2 recipes per row) */
+    }
+    .recipes-container {
+        padding-left: 5%; /* Adjust left padding for phone */
+        padding-right: 5%; /* Adjust right padding for phone */
+  }
+}
+
+@media screen and (max-width: 320px) {
+    .recipe-card {
+      width: calc(100% - 20px); /* Adjust width for smaller screens (1 recipe per row) */
+    }
+  }

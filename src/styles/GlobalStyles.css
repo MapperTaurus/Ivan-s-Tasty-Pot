@@ -3,10 +3,9 @@
 /* Apply Motiva Sans font to all text */
 body {
     font-family: 'Motiva Sans', sans-serif;
-  }
-  
-  /* Change background color to cyan */
-  body {
     background-color: #fffcef
   }
   
+  h3 {
+    margin-bottom: 10px;
+}

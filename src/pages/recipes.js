@@ -1,9 +1,10 @@
 // src/pages/recipes.js
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../config/firebaseConfig';
 import TopNav from '../components/topNav';
+import RecipeCard from '../components/recipeCard'; // Import the RecipeCard component
+import '../styles/RecipeCard.css'; // Import the Recipes.css file
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -20,31 +21,21 @@ const Recipes = () => {
     };
 
     fetchRecipes();
-  }, []); // Empty dependency array means this effect runs once when the component mounts
+  }, []);
 
   return (
     <div>
-          <TopNav />
+      <TopNav />
       <h1>Recipes</h1>
-      {recipes.map((recipe) => (
-        <div key={recipe.id}>
-          <h2>
-            <Link
-              to={`/recipe/${encodeURIComponent(recipe.title).replace(/\+/g, ' ')}`}
-              onClick={() => console.log('Clicked on:', recipe.title)}
-            >
-              {recipe.title}
-            </Link>
-          </h2>
-          {recipe.thumbnail && (
-            <img
-              src={recipe.thumbnail}
-              alt={`Recipe: ${recipe.title}`}
-              style={{ maxWidth: '40%', height: 'auto' }}
-            />
-          )}
-        </div>
-      ))}
+      <div className="recipes-container">
+        {recipes.map((recipe) => (
+          <RecipeCard
+            key={recipe.id}
+            title={recipe.title}
+            thumbnail={recipe.thumbnail}
+          />
+        ))}
+      </div>
     </div>
   );
 };
