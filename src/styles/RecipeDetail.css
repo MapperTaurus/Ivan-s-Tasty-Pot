@@ -24,7 +24,7 @@
   margin: 0 auto; /* Center the image horizontally */
 }
 
-.close-button {
+.close_button {
   position: fixed;
   top: 10px;
   right: 10px;
@@ -33,7 +33,7 @@
   font-size: 24px; /* Default font size */
 }
 
-.prev-button {
+.prev_button {
   position: fixed;
   top: 50%;
   left: 10px; /* Adjust distance from the left side */
@@ -43,7 +43,7 @@
   font-size: 24px; /* Default font size */
 }
 
-.next-button {
+.next_button {
   position: fixed;
   top: 50%;
   right: 10px; /* Adjust distance from the right side */
@@ -55,32 +55,32 @@
 
 /* Media query for smaller screens (e.g., mobile devices) */
 @media (max-width: 768px) {
-  .prev-button,
-  .next-button {
+  .prev_button,
+  .next_button {
     font-size: 16px; /* Adjust font size for smaller screens */
   }
-  .close-button{
+  .close_button{
     font-size: 24px;
   }
 }
 
 /* Media query for medium-sized screens (e.g., tablets) */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .prev-button,
-  .next-button {
+  .prev_button,
+  .next_button {
     font-size: 24px; /* Adjust font size for medium-sized screens */}
-  .close-button{
+  .close_button{
       font-size: 32px;
     }
 }
 
 /* Media query for larger screens (e.g., desktops) */
 @media (min-width: 1025px) {
-  .prev-button,
-  .next-button {
+  .prev_button,
+  .next_button {
     font-size: 32px; /* Adjust font size for larger screens */
   }
-  .close-button{
+  .close_button{
     font-size: 52px;
   }
 

@@ -161,15 +161,15 @@ const RecipeDetail = () => {
               alt={`${selectedImageIndex + 1}`}
             />
             {/* Close button */}
-            <span className="close-button" onClick={closeGallery}>
+            <span className="close_button" onClick={closeGallery}>
               <i className="far fa-circle-xmark"></i>
             </span>
             {/* Previous button */}
-            <span className="prev-button" onClick={() => navigateGallery('prev')}>
+            <span className="prev_button" onClick={() => navigateGallery('prev')}>
               <i className="fas fa-circle-arrow-left"></i>
             </span>
             {/* Next button */}
-            <span className="next-button" onClick={() => navigateGallery('next')}>
+            <span className="next_button" onClick={() => navigateGallery('next')}>
               <i className="fas fa-circle-arrow-right"></i>
             </span>
           </div>

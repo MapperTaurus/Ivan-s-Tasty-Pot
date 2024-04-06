@@ -5,7 +5,8 @@ import Home from './pages/home';
 import Recipes from './pages/recipes';
 import AddRecipe from './components/addRecipe';
 import RecipeDetail from './components/recipeDetail';
-import TagRecipes from './pages/tagRecipes'; // Import the new component
+import TagRecipes from './pages/tagRecipes'; 
+import About from './pages/about'; 
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/add-recipe" element={<AddRecipe />} />
         <Route path="/recipe/:recipeName" element={<RecipeDetail />} />
         <Route path="/tag/:tag" element={<TagRecipes />} /> {/* New route for tags */}
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   );

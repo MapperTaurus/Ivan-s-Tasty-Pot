@@ -26,8 +26,7 @@ const Recipes = () => {
   return (
     <div>
       <TopNav />
-      <h1>Recipes</h1>
-      <div className="recipes-container">
+      <div className="recipes_container">
         {recipes.map((recipe) => (
           <RecipeCard
             key={recipe.id}
