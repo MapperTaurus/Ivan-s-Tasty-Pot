@@ -4,10 +4,9 @@ import { collection, getDocs, where, query } from 'firebase/firestore';
 import { firestore } from '../config/firebaseConfig';
 import { Link } from 'react-router-dom';
 import { tagMapping } from '../components/tagMapping';
+import TopNav from '../components/topNav';
 import '../styles/RecipeDetail.css';
 import '../styles/TagStyle.css';
-
-
 
 const RecipeDetail = () => {
   const { recipeName } = useParams();
@@ -113,8 +112,27 @@ const RecipeDetail = () => {
     };
   }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
 
+  useEffect(() => {
+    const handleClick = (event) => {
+      const clickedListItem = event.target.closest('li');
+      if (!clickedListItem) return; // If the clicked element is not an <li>, exit
+  
+      clickedListItem.classList.toggle('selected');
+    };
+  
+    // Add event listener to the document to handle clicks on list items
+    document.addEventListener('click', handleClick);
+  
+    // Cleanup function to remove event listener when the component unmounts
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, []);
+  
+
   return (
     <div>
+      <TopNav />
       {recipeDetails ? (
         <div>
           <h1>Recipe Detail: {recipeDetails.title}</h1>

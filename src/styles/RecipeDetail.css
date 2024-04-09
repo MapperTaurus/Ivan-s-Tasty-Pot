@@ -21,7 +21,8 @@
   max-width: 80%;
   max-height: 80%;
   display: block;
-  margin: 0 auto; /* Center the image horizontally */
+  margin: 0 auto;
+  /* Center the image horizontally */
 }
 
 .close_button {
@@ -30,57 +31,90 @@
   right: 10px;
   cursor: pointer;
   color: white;
-  font-size: 24px; /* Default font size */
+  font-size: 24px;
+  /* Default font size */
 }
 
 .prev_button {
   position: fixed;
   top: 50%;
-  left: 10px; /* Adjust distance from the left side */
+  left: 10px;
+  /* Adjust distance from the left side */
   transform: translateY(-50%);
   cursor: pointer;
   color: white;
-  font-size: 24px; /* Default font size */
+  font-size: 24px;
+  /* Default font size */
 }
 
 .next_button {
   position: fixed;
   top: 50%;
-  right: 10px; /* Adjust distance from the right side */
+  right: 10px;
+  /* Adjust distance from the right side */
   transform: translateY(-50%);
   cursor: pointer;
   color: white;
-  font-size: 24px; /* Default font size */
+  font-size: 24px;
+  /* Default font size */
+}
+
+ol.steps {
+  counter-reset: gradient-counter;
+  list-style: none;
+  margin: 1.75rem 0;
+  padding: 0;
+}
+
+ol.steps > li {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 /* Media query for smaller screens (e.g., mobile devices) */
 @media (max-width: 768px) {
+
   .prev_button,
   .next_button {
-    font-size: 16px; /* Adjust font size for smaller screens */
+    font-size: 16px;
+    /* Adjust font size for smaller screens */
   }
-  .close_button{
+
+  .close_button {
     font-size: 24px;
   }
 }
 
 /* Media query for medium-sized screens (e.g., tablets) */
 @media (min-width: 769px) and (max-width: 1024px) {
+
   .prev_button,
   .next_button {
-    font-size: 24px; /* Adjust font size for medium-sized screens */}
-  .close_button{
-      font-size: 32px;
-    }
+    font-size: 24px;
+    /* Adjust font size for medium-sized screens */
+  }
+
+  .close_button {
+    font-size: 32px;
+  }
 }
 
 /* Media query for larger screens (e.g., desktops) */
 @media (min-width: 1025px) {
+
   .prev_button,
   .next_button {
-    font-size: 32px; /* Adjust font size for larger screens */
+    font-size: 32px;
+    /* Adjust font size for larger screens */
   }
-  .close_button{
+
+  .close_button {
     font-size: 52px;
   }
 

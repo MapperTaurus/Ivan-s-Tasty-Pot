@@ -36,7 +36,7 @@
   color: #333;
   padding: 10px 15px;
   transition: background-color 0.3s;
-  background-color: #f9c901;
+  background: linear-gradient(to bottom, #ffe169, #f9c901);
 }
 
 .nav_button_round_r {

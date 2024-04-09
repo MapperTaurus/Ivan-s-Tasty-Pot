@@ -2,10 +2,73 @@
 
 /* Apply Motiva Sans font to all text */
 body {
-    font-family: 'Motiva Sans', sans-serif;
-    background-color: #fffcef
-  }
-  
-  h3 {
-    margin-bottom: 10px;
+  font-family: 'Motiva Sans', sans-serif;
+  background-color: #fffcef;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+ol.steps {
+  counter-reset: gradient-counter;
+  list-style: none;
+  margin: 1.75rem 0;
+  padding: 0;
+}
+
+ol.steps > li {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+ol.steps > li::before {
+  background: linear-gradient(135deg, #f9c901 0%, #e49c00 100%); /* #ffe169, #f9c901 */
+  border-radius: 0.5rem 0 0 0;
+  content: counter(gradient-counter);
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px; /* Set width to 50px */
+  height: 50px; /* Set height to 50px */
+  counter-increment: gradient-counter; /* Increment the counter */
+}
+
+ol.steps > li.selected::before {
+  background: linear-gradient(135deg, #4eff5d 0%, #02da14 100%);
+  content: '\2714'; /* Check mark icon */
+}
+
+ol.steps > li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50px; /* Set left position to match li::before width */
+  width: calc(100% - 50px); /* Adjusted width to account for li::before width */
+  height: 50px; /* Set height to 50px */
+  border-radius: 0 0.5rem 0.5rem 0; /* Round only top right and bottom right corners */
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+ol.steps > li.selected::after {
+  background-color: rgba(0, 0, 0, 0.1); /* Add a translucent overlay when selected */
+  opacity: 1;
+}
+
+ol.steps > li > span {
+  margin-left: 2.5rem; /* Adjust as needed */
 }
