@@ -128,8 +128,31 @@ const RecipeDetail = () => {
       document.removeEventListener('click', handleClick);
     };
   }, []);
-  
 
+  useEffect(() => {
+    const handleClick = (event) => {
+      const clickedListItem = event.target.closest('.ingredient');
+      if (!clickedListItem) return; // If the clicked element is not an ingredient, exit
+  
+      clickedListItem.classList.toggle('selected');
+    };
+  
+    // Add event listener to the document to handle clicks on ingredients
+    document.querySelectorAll('.ingredient').forEach((ingredient) => {
+      ingredient.addEventListener('click', () => {
+        ingredient.classList.toggle('selected');
+      });
+    });
+  
+    // Add event listener to the document to handle clicks on list items
+    document.addEventListener('click', handleClick);
+  
+    // Cleanup function to remove event listener when the component unmounts
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, []);
+  
   return (
     <div>
       <TopNav />
