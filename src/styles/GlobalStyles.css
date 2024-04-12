@@ -111,3 +111,28 @@ ol.steps > li > span {
 .ingredient.selected .ingredient-value {
   background: linear-gradient(135deg, #4eff5d 0%, #02da14 100%);
 }
+
+.details_heading {
+  color: #333;
+  font-size: 36px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 0.2rem;
+}
+
+.details_heading::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Adjust as needed */
+  left: 0;
+  width: calc(100% - 4px); /* Adjust to leave space for the fading effect */
+  height: 4px;
+  background: linear-gradient(to right, #f9c901, rgba(249, 201, 1, 0)); /* Adjust colors as needed */
+}
+
+
+
+
+
+
+

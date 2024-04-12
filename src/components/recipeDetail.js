@@ -159,35 +159,44 @@ const RecipeDetail = () => {
       {recipeDetails ? (
         <div>
           <h1>Recipe Detail: {recipeDetails.title}</h1>
-          <div>
-            {recipeDetails.thumbnail && (
-              <img
-                src={recipeDetails.thumbnail}
-                alt={`${recipeDetails.title}`}
-                style={{ maxWidth: '20%', height: 'auto', cursor: 'pointer' }}
-                onClick={() => openGallery(0)}
-              />
-            )}
-            {recipeDetails.gallery.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt={`${index + 1}`}
-                style={{ display: 'none' }} // Hide gallery images initially
-              />
-            ))}
-          </div>
-          <div dangerouslySetInnerHTML={{ __html: recipeDetails.ingredients }} />
-          <div dangerouslySetInnerHTML={{ __html: recipeDetails.steps }} />
+            <div className="image_container">
+              {recipeDetails.thumbnail && (
+                <img
+                  src={recipeDetails.thumbnail}
+                  alt={`${recipeDetails.title}`}
+                  style={{ maxWidth: '20%', height: 'auto', cursor: 'pointer' }}
+                  onClick={() => openGallery(0)}
+                />
+              )}
+              {recipeDetails.gallery.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`${index + 1}`}
+                  style={{ display: 'none' }} // Hide gallery images initially
+                />
+              ))}
+            </div>
+            <div className="cards_container">
+              <div className="ingredients card">
+              <div className="details_heading">Ingredients</div>
+                <div dangerouslySetInnerHTML={{ __html: recipeDetails.ingredients }} />
+              </div>
+              <div className="steps card">
+              <div className="details_heading">Steps</div>
+                <div dangerouslySetInnerHTML={{ __html: recipeDetails.steps }} />
+              </div>
+            </div>
           <p>
-            Tags: {recipeDetails.tags && recipeDetails.tags.map((tag) => {
-              const tagClassNames = tagMapping[tag] ? tagMapping[tag].join(' ') : 'tag_none';
-              return (
-                <Link key={tag} to={`/tag/${tag}`}>
-                  <span className={`tag_all ${tagClassNames}`}>{tag}</span> {/* Apply the classes */}
-                </Link>
-              );
-            })}
+            Tags: {recipeDetails.tags &&
+              recipeDetails.tags.map((tag) => {
+                const tagClassNames = tagMapping[tag] ? tagMapping[tag].join(' ') : 'tag_none';
+                return (
+                  <Link key={tag} to={`/tag/${tag}`}>
+                    <span className={`tag_all ${tagClassNames}`}>{tag}</span> {/* Apply the classes */}
+                  </Link>
+                );
+              })}
           </p>
         </div>
       ) : (
