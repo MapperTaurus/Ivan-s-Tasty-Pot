@@ -145,10 +145,6 @@ ol.steps > li {
   width: calc(50% - 20px); /* Set width for each card with spacing */
   margin: 5px;
   padding: 10px; /* Add padding */
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
