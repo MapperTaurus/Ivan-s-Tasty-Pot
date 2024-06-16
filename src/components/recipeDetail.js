@@ -178,6 +178,9 @@ const RecipeDetail = () => {
               ))}
             </div>
             <div className="cards_container">
+            <div className="content_top card">
+                <div dangerouslySetInnerHTML={{ __html: recipeDetails.content_top }} />
+              </div>
               <div className="ingredients card">
               <div className="details_heading">Ingredients</div>
                 <div dangerouslySetInnerHTML={{ __html: recipeDetails.ingredients }} />
@@ -185,6 +188,9 @@ const RecipeDetail = () => {
               <div className="steps card">
               <div className="details_heading">Steps</div>
                 <div dangerouslySetInnerHTML={{ __html: recipeDetails.steps }} />
+              </div>
+              <div className="content_bottom card">
+                <div dangerouslySetInnerHTML={{ __html: recipeDetails.content_bottom }} />
               </div>
             </div>
           <p>

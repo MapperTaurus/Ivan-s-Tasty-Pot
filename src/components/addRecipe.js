@@ -17,9 +17,12 @@ const AddRecipe = () => {
     tags: '',
     thumbnail: null,
     gallery: [],
+    content_top: '',
+    content_bottom: ''
   });
 
   const [loading, setLoading] = useState(false);
+  const [showContent, setShowContent] = useState(false); // New state for toggling content visibility
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -76,16 +79,20 @@ const AddRecipe = () => {
       console.error(`Textarea with ID '${target}' not found`);
       return;
     }
-  
+
     const { selectionStart, selectionEnd } = textarea;
     const textBefore = textarea.value.substring(0, selectionStart);
     const textAfter = textarea.value.substring(selectionEnd);
     const newText = `${textBefore}${tag}${textAfter}`;
-  
+
     setRecipe((prevRecipe) => ({
       ...prevRecipe,
       [target]: newText,
     }));
+  };
+
+  const handleToggleChange = () => {
+    setShowContent((prevShowContent) => !prevShowContent);
   };
 
   return (
@@ -111,7 +118,7 @@ const AddRecipe = () => {
           </label>
           <label>
             Steps:
-            <TextEditor insertText={insertText} target="steps" className="add_button"/>
+            <TextEditor insertText={insertText} target="steps" />
             <textarea
               id="steps"
               name="steps"
@@ -142,7 +149,36 @@ const AddRecipe = () => {
                 </ul>
               </div>
             )}
-          </label>
+          </label>  
+            <input type="checkbox" id="extra" onChange={handleToggleChange} />
+          {showContent && (
+            <>
+              <label>
+                Top Content (optional)
+                <TextEditor insertText={insertText} target="content_top" />
+                <textarea
+                  id="content_top"
+                  name="content_top"
+                  value={recipe.content_top}
+                  onChange={handleInputChange}
+                  rows={10}
+                />
+                <div dangerouslySetInnerHTML={{ __html: parse(recipe.content_top) }} />
+              </label>
+              <label>
+                Bottom Content (optional)
+                <TextEditor insertText={insertText} target="content_bottom" />
+                <textarea
+                  id="content_bottom"
+                  name="content_bottom"
+                  value={recipe.content_bottom}
+                  onChange={handleInputChange}
+                  rows={10}
+                />
+                <div dangerouslySetInnerHTML={{ __html: parse(recipe.content_bottom) }} />
+              </label>
+            </>
+          )}
           <button type="button" className="add_button" onClick={handleAddRecipe} disabled={loading}>
             {loading ? 'Adding...' : 'Add Recipe'}
           </button>
